@@ -34,7 +34,7 @@ for text in texts:
 for call in calls:
     cdr = parser.parse_record(call)
 
-    all_numbers[tdr.a_number] = "record"
-    all_numbers[tdr.b_number] = "record"
+    all_numbers[cdr.a_number] = "record"
+    all_numbers[cdr.b_number] = "record"
 
 print("There are {} different numbers in the records.".format(len(all_numbers.keys())))
