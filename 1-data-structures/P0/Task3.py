@@ -97,13 +97,13 @@ num_fixed_to_fixed_calls = 0
 for call in calls:
     cdr = parser.parse_record(call)
 
-    fixed_area_code_a = cdr.is_fixed(cdr.a_number)
-    fixed_area_code_b = cdr.is_fixed(cdr.b_number)
+    fixed_bangalore_a = cdr.is_fixed_bangalore(cdr.a_number)
+    fixed_bangalore_b = cdr.is_fixed_bangalore(cdr.b_number)
 
-    if fixed_area_code_a and fixed_area_code_b:
+    if fixed_bangalore_a and fixed_bangalore_b:
         num_fixed_to_fixed_calls += 1
 
-    if fixed_area_code_a:
+    if fixed_bangalore_a:
         num_fixed_a_calls += 1
 
 print("{0:.2f} percent of calls from fixed lines in Bangalore are calls to other fixed lines in Bangalore.".format(num_fixed_to_fixed_calls/num_fixed_a_calls*100))

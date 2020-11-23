@@ -82,6 +82,27 @@ class CallDetailRecord(TextDetailRecord):
         else:
             return None
 
+    def is_fixed_bangalore(self, number):
+        """
+        - Fixed lines start with an area code enclosed in brackets. The area
+          codes vary in length but always begin with 0.
+        - Mobile numbers have no parentheses, but have a space in the middle
+          of the number to help readability. The prefix of a mobile number
+          is its first four digits, and they always start with 7, 8 or 9.
+        - Telemarketers' numbers have no parentheses or space, but they start
+          with the area code 140.
+        """
+
+        import re
+        if re.search(r'\(080\)', number) is not None:
+
+            search_results = re.finditer(r'\(.*?\)', number)
+            for item in search_results:
+                std = item.group(0)
+                return std
+        else:
+            return None
+
 
 
 
