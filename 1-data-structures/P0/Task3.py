@@ -53,34 +53,34 @@ parser = CdrParser()
 
 fixed_area_codes = {}
 mobile_prefixes = {}
+telemarketing_prefixes = {}
 
 for call in calls:
     cdr = parser.parse_record(call)
 
-    fixed_area_code = cdr.is_fixed(cdr.a_number)
+    if cdr.a_number.startswith("(080)"):
 
-    if fixed_area_code is not None:
-        fixed_area_codes[fixed_area_code] = "record"
+        fixed_area_code = cdr.is_fixed(cdr.b_number)
 
-    fixed_area_code = cdr.is_fixed(cdr.b_number)
+        if fixed_area_code is not None:
+            fixed_area_codes[fixed_area_code] = "record"
 
-    if fixed_area_code is not None:
-        fixed_area_codes[fixed_area_code] = "record"
+        mobile_prefix = cdr.is_mobile(cdr.b_number)
 
-    mobile_prefix = cdr.is_mobile(cdr.a_number)
+        if mobile_prefix is not None:
+            mobile_prefixes[mobile_prefix] = "record"
 
-    if mobile_prefix is not None:
-        mobile_prefixes[mobile_prefix] = "record"
+        telemarketing_prefix = cdr.is_telemarketing(cdr.b_number)
 
-    mobile_prefix = cdr.is_mobile(cdr.b_number)
-
-    if mobile_prefix is not None:
-        mobile_prefixes[mobile_prefix] = "record"
+        if telemarketing_prefix is not None:
+            telemarketing_prefixes[telemarketing_prefix] = "record"
 
 fixed_area_codes = list(fixed_area_codes.keys())
 mobile_prefixes = list(mobile_prefixes.keys())
+telemarketing_prefixes = list(telemarketing_prefixes.keys())
 
 fixed_area_codes.extend(mobile_prefixes)
+fixed_area_codes.extend(telemarketing_prefixes)
 
 area_codes = fixed_area_codes
 
