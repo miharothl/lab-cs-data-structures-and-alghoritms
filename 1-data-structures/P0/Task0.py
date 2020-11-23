@@ -27,5 +27,5 @@ parser = CdrParser()
 tdr = parser.parse_record(texts[0])
 print("First record of texts, {}".format(tdr.to_string()))
 
-cdr = parser.parse_record(calls[0])
+cdr = parser.parse_record(calls[len(calls)-1])
 print("Last record of calls, {}".format(cdr.to_string()))
