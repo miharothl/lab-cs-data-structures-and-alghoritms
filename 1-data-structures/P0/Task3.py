@@ -91,7 +91,7 @@ for area_code in sorted(area_codes):
 #####################################################################################################################
 # B
 
-num_calls = 0
+num_fixed_a_calls = 0
 num_fixed_to_fixed_calls = 0
 
 for call in calls:
@@ -103,7 +103,8 @@ for call in calls:
     if fixed_area_code_a and fixed_area_code_b:
         num_fixed_to_fixed_calls += 1
 
-    num_calls += 1
+    if fixed_area_code_a:
+        num_fixed_a_calls += 1
 
-print("{0:.2f} percent of calls from fixed lines in Bangalore are calls to other fixed lines in Bangalore.".format(num_fixed_to_fixed_calls/num_calls*100))
+print("{0:.2f} percent of calls from fixed lines in Bangalore are calls to other fixed lines in Bangalore.".format(num_fixed_to_fixed_calls/num_fixed_a_calls*100))
 
