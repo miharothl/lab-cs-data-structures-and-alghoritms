@@ -26,58 +26,35 @@ September 2016.".
 parser = CdrParser()
 
 
-def get_longest_call_duration_a_number(calls):
-    a_call_duration = {}
+def get_longest_call_duration_number(calls):
+    call_duration = {}
     for call in calls:
         cdr = parser.parse_record(call)
 
-        if cdr.a_number in a_call_duration:
-            a_call_duration[cdr.a_number] += cdr.duration
+        if cdr.a_number in call_duration:
+            call_duration[cdr.a_number] += cdr.duration
         else:
-            a_call_duration[cdr.a_number] = cdr.duration
+            call_duration[cdr.a_number] = cdr.duration
 
-    a_number_longest = None
-    a_number_longest_time = 0
-
-    for a_number in a_call_duration.keys():
-
-        if a_call_duration[a_number] > a_number_longest_time:
-            a_number_longest_time = a_call_duration[a_number]
-            a_number_longest = a_number
-
-    return a_number_longest, a_number_longest_time
-
-
-def get_longest_call_duration_b_number(calls):
-    b_call_duration = {}
-    for call in calls:
-        cdr = parser.parse_record(call)
-
-        if cdr.b_number in b_call_duration:
-            b_call_duration[cdr.b_number] += cdr.duration
+        if cdr.b_number in call_duration:
+            call_duration[cdr.b_number] += cdr.duration
         else:
-            b_call_duration[cdr.b_number] = cdr.duration
+            call_duration[cdr.b_number] = cdr.duration
 
-    b_number_longest = None
-    b_number_longest_time = 0
+    number_longest = None
+    number_longest_time = 0
 
-    for b_number in b_call_duration.keys():
+    for number in call_duration.keys():
 
-        if b_call_duration[a_number] > b_number_longest_time:
-            b_number_longest_time = b_call_duration[a_number]
-            b_number_longest = b_number
+        if call_duration[number] > number_longest_time:
+            number_longest_time = call_duration[number]
+            number_longest = number
 
-    return b_number_longest, b_number_longest_time
+    return number_longest, number_longest_time
 
 
-a_number, a_number_total_time = get_longest_call_duration_a_number(calls)
-b_number, b_number_total_time = get_longest_call_duration_b_number(calls)
+number, number_total_time = get_longest_call_duration_number(calls)
 
-if a_number_total_time > b_number_total_time:
-    print(
-        "{} spent the longest time, {} seconds, on the phone during September 2016.".format(
-            a_number, a_number_total_time))
-else:
-    print(
-        "{} spent the longest time, {} seconds, on the phone during September 2016.".format(
-            b_number, b_number_total_time))
+print(
+    "{} spent the longest time, {} seconds, on the phone during September 2016.".format(
+    number, number_total_time))
