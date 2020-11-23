@@ -52,6 +52,7 @@ parser = CdrParser()
 # A
 
 fixed_area_codes = {}
+mobile_prefixes = {}
 
 for call in calls:
     cdr = parser.parse_record(call)
@@ -66,11 +67,26 @@ for call in calls:
     if fixed_area_code is not None:
         fixed_area_codes[fixed_area_code] = "record"
 
+    mobile_prefix = cdr.is_mobile(cdr.a_number)
+
+    if mobile_prefix is not None:
+        mobile_prefixes[mobile_prefix] = "record"
+
+    mobile_prefix = cdr.is_mobile(cdr.b_number)
+
+    if mobile_prefix is not None:
+        mobile_prefixes[mobile_prefix] = "record"
+
 fixed_area_codes = list(fixed_area_codes.keys())
+mobile_prefixes = list(mobile_prefixes.keys())
+
+fixed_area_codes.extend(mobile_prefixes)
+
+area_codes = fixed_area_codes
 
 print("The numbers called by people in Bangalore have codes:")
-for fixed_area_code in sorted(fixed_area_codes):
-    print(fixed_area_code)
+for area_code in sorted(area_codes):
+    print(area_code)
 
 #####################################################################################################################
 # B

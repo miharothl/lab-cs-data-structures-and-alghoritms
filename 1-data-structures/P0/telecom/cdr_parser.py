@@ -21,8 +21,25 @@ class CallDetailRecord(TextDetailRecord):
     def to_string(self):
         return "{} texts {} at time {}, lasting {} seconds".format(self.a_number, self.b_number, self.timestamp, self.duration)
 
+    def is_mobile(self, number):
+        """
+        - Fixed lines start with an area code enclosed in brackets. The area
+          codes vary in length but always begin with 0.
+        - Mobile numbers have no parentheses, but have a space in the middle
+          of the number to help readability. The prefix of a mobile number
+          is its first four digits, and they always start with 7, 8 or 9.
+        - Telemarketers' numbers have no parentheses or space, but they start
+          with the area code 140.
+        """
 
+        import re
+        match = re.search(r'(^[789]...)', number)
 
+        if match is not None:
+            std = match.group(1)
+            return std
+        else:
+            return None
 
     def is_fixed(self, number):
         """

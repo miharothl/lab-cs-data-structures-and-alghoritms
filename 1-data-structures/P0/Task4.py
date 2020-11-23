@@ -38,7 +38,6 @@ but never
  receive incoming calls
 """
 #####################################################################################################################
-# A
 
 unique_a_call_numbers = {}
 unique_b_call_numbers = {}
