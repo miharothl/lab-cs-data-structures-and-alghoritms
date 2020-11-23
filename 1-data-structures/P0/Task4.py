@@ -85,8 +85,6 @@ for candidate in unique_a_call_numbers:
     if candidate_flag:
         marketing_candidates.append(candidate)
 
-print(marketing_candidates)
-
 
 print("These numbers could be telemarketers: ")
 
