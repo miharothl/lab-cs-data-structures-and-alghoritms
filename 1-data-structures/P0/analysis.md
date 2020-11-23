@@ -61,12 +61,10 @@ during the period?
 
 * load list of call records - N
 * load list of text records - N
-* traverse call records to sum a_number durations - N
+* traverse call records to sum a_number and b_number durations - N
 * traverse unique a_numbers durations to find longest call- N
-* traverse call records to sum b_number durations - N
-* traverse unique b_numbers durations to find longest call- N
 
-`N + N + N + N + N + N= 6N = O(N) <<-- algorithm is linear`
+`N + N + N + N= 4N = O(N) <<-- algorithm is linear`
 
 ## Task 3A: Find all of the area codes and mobile prefixes called by people in Bangalore.
 
