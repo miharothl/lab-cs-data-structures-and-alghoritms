@@ -60,8 +60,8 @@ Space complexity is O(n).
 
 ## Problem 6: Union and Intersection
 
-To solve Union of the two Linked Lists, I used Map to find the frequency of the elements in both lists. I needed to loop through the linked list
-O(n) and set items to the Map O(1). To populate the Union Linked List I implemented the `insert` method which inserts elements at constant time.
+The Union of the two Linked Lists' solution involved using a Map to find the frequency of the elements in both lists first. I needed to loop through the linked lists
+(O(n)) and set items to the Map (O(1)). To populate the Union Linked List I implemented the `insert` method that inserts elements at constant time O(1).
 
 Solving the Intersection involved one additional step. I needed to transform each linked list into a Set by using Map. After that 
 I was able to calculate the Intersection by using another Map as a frequency counter.
