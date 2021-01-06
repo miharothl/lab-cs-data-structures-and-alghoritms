@@ -16,13 +16,13 @@ The overall time and space efficiency of the implemented LRU cache are of O(1).
 
 ## Problem 2: File Recursion
 
-To solve file recursion, I used a recursion algorithm implemented in `find_files_recursive`. A file system is a tree structure.
+To solve file recursion, I used a recursion algorithm implemented in `find_files_recursive`. A file system is a Tree data structure.
 The recursive function recursively enters a directory and stores results of files that we are looking for `suffix`
 into python list `found_files = []`. I used append operation to add the results to the list, which has a time complexity
 of O(1).
 
 The overall time and space efficiency of the implemented solution is O(n), where n is the number of files and directories
-that need to be traversed.
+that need to be visited.
 
 ## Problem 3: Huffman Coding
 
