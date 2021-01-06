@@ -5,11 +5,11 @@
 
 To efficiently solve the LRU cache, I use a combination of Queue and Map (dictionary).
 
-The queue is used to track the order of the `use_operations` (get and set). The size of the queue is the size of LRU
-cache capacity. The queue is implemented using the python list. The time complexity of the items' enqueuing and dequeuing has a time complexity of O(1).
+I used the Queue to track the order of the `use_operations` (get and set). The size of the Queue is the size of LRU
+cache capacity. I implemented the Queue using the python list. The time complexity of the items' enqueuing and dequeuing has a time complexity of O(1).
 
-The Map is used as the lookup table. For a given key, it will return the value of the document. To prevent map size growth indefinitely,
-items that are least recently used items dequeued from the queue are removed. The time complexity of map operations like
+The Map is used as the lookup table. For a given key, it will return the document. To prevent map size growth indefinitely,
+items that are least recently used (dequeued from Queue) are removed from the Map. The time complexity of map operations like
 setting, getting, and removing the key-value pairs has a time complexity of O(1).
 
 The overall time and space efficiency of the implemented LRU cache are of O(1).
