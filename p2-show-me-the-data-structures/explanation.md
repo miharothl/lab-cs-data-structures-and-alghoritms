@@ -43,7 +43,7 @@ To build a Huffman Tree, I used a Binary Tree. For the unbalanced binary tree, i
 the Tree is balanced, and I would assume O(log n) time complexity.
 
 Finally, I need to encode the data. I used a loop to visit each character and then searched for the minimal encoding weight by
-searching the Hofman Tree node with time complexity O(log n). So the overall encoding time complexity is O(n log n).
+searching the Hofman Tree with time complexity O(log n). So the overall encoding time complexity is O(n log n).
 
 Decoding is very similar to encoding and the overall time complexity of the algorithm is O(n log n), overall space complexity is O(n)
 
