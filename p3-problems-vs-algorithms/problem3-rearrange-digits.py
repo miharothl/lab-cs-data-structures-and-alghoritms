@@ -134,6 +134,12 @@ def test_rearrange_digits_edge_conditions():
         print("Pass: Returns exception. Should return exception.")
 
     try:
+        rearrange_digits([])
+        print('Fail')
+    except AssertionError:
+        print("Pass: Returns exception. Should return exception.")
+
+    try:
         rearrange_digits([1])
         print('Fail')
     except AssertionError:

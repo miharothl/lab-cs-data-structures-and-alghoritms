@@ -53,6 +53,8 @@ class Router:
         # You will need to split the path and pass the pass parts
         # as a list to the RouteTrie
 
+        assert type(path) is str
+
         path_sections = self.split_path(path)
         self.router.insert(path_sections, handler)
 
@@ -62,6 +64,8 @@ class Router:
         # return the "not found" handler if you added one
         # bonus points if a path works with and without a trailing slash
         # e.g. /about and /about/ both return the /about handler
+
+        assert type(path) is str
 
         path_sections = self.split_path(path)
         handler = self.router.find(path_sections)
@@ -114,16 +118,19 @@ def test_router(debug=False):
 
 
 def test_router_edge_conditions():
-    root_handler = None
-    about_handler = None
+    router = Router(None)
+    try:
+        router.add_handler(None, None)  # add a route
+        print('Fail')
+    except AssertionError:
+        print('Pass')
 
-    router = Router(root_handler)
-    router.add_handler("/home/about", about_handler)  # add a route
+    router = Router(None)
+    router.add_handler("/home/about", None)  # add a route
 
     # some lookups with the expected output
     handler = router.lookup('/')
-    print('Pass') if handler == root_handler else print('Fail')
-
+    print('Pass') if handler == None else print('Fail')
 
 def test_router_long_path():
     root_handler = 'root handler'

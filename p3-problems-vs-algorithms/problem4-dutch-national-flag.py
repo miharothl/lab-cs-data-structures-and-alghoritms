@@ -54,6 +54,12 @@ def test_sort123_edge_conditions():
     test_function([0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2])
 
     try:
+        test_function(None)
+        print("Fail")
+    except:
+        print("Pass: Returns exception. Should return exception.")
+
+    try:
         test_function([3])
         print("Fail")
     except:

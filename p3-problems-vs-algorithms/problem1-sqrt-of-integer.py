@@ -8,6 +8,7 @@ def sqrt(number):
        int: Floored Square Root
     """
     assert type(number) is int
+    assert number >= 0
 
     return sqrt_recursive(sqrt_number=number, upper=number, lower=0)
 
@@ -45,6 +46,12 @@ def test_sqrt_edge_conditions():
 
     try:
         res = sqrt(None)
+        print("Fail")
+    except AssertionError:
+        print("Pass: Returns exception. Should return exception.")
+
+    try:
+        res = sqrt(-1)
         print("Fail")
     except AssertionError:
         print("Pass: Returns exception. Should return exception.")

@@ -7,6 +7,9 @@ def rotated_array_search(input_list, number):
     Returns:
        int: Index or -1
     """
+    assert type(input_list) is list
+    assert len(input_list) > 0
+
     return rotated_array_search_recursive(input_list, number, lower_idx=0, upper_idx=len(input_list)-1)
 
 
@@ -68,6 +71,12 @@ def test_rotated_array_search():
 def test_rotated_array_search_edge_conditions():
     test_function([[6, 7, 8, 1, 2, 3, 4], 10])
     test_function([[6, 7, 8, 9, 2, 3, 4], 1])
+
+    try:
+        rotated_array_search([], 0)
+        print('Fail')
+    except AssertionError:
+        print('Pass')
 
 
 def test_rotated_array_search_large_array():

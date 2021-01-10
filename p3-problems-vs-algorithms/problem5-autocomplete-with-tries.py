@@ -35,6 +35,8 @@ class Trie:
         node.is_word = True
 
     def find(self, prefix):
+        assert type(prefix) is str
+
         node = self.root
 
         for char in prefix:
@@ -73,12 +75,20 @@ def test_trie(prefix, expected_suggestions, debug=False):
     if debug:
         print('{} => {}'.format(prefix, suggestions))
 
+
 def test_trie_edge_conditions():
 
     trie = Trie()
-    node = trie.find('trie')
+    try:
+        node = trie.find(None)
+        print('Fail')
+    except AssertionError:
+        print('Pass')
 
+    node = trie.find('trie')
     print('Pass') if node is None else print('Fail')
+
+
 
 
 if __name__ == "__main__":
