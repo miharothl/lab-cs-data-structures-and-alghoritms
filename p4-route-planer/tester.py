@@ -6,6 +6,9 @@ MAP_40_ANSWERS = [
     (8, 24, [8, 14, 16, 37, 12, 17, 10, 24])
 ]
 
+def test2():
+    pass
+
 def test(shortest_path_function):
     map_40 = load_map('map-40.pickle')
     correct = 0
@@ -22,4 +25,4 @@ def test(shortest_path_function):
         print("All tests pass! Congratulations!")
     else:
         print("You passed", correct, "/", len(MAP_40_ANSWERS), "test cases")
-    
+        

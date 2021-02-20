@@ -1,3 +1,6 @@
-def shortest_path(M,start,goal):
-    print("shortest path called")
-    return
+from route_planner import RoutePlanner
+
+
+def shortest_path(M, start, goal):
+    planner = RoutePlanner(M)
+    return planner.find_shortest_path(start=start, goal=goal)
