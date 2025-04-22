@@ -12,20 +12,31 @@ from _toolbox.TreeFactory import TreeFactory
 #         self.right = right
 class Solution:
 
-    def __max_depth(self, depth: int, node: Optional[TreeNode]):
+    # def __max_depth(self, depth: int, node: Optional[TreeNode]):
+    #
+    #     if not node:
+    #         return 0
+    #     else:
+    #         left_depth = self.__max_depth(depth, node.left)
+    #         right_depth = self.__max_depth(depth, node.right)
+    #
+    #         depth = max(left_depth, right_depth) + 1
+    #
+    #     return depth
+    #
+    # def maxDepth(self, root: Optional[TreeNode]) -> int:
+    #     return self.__max_depth(0, root)
 
-        if not node:
-            return 0
-        else:
-            left_depth = self.__max_depth(depth, node.left)
-            right_depth = self.__max_depth(depth, node.right)
-
-            depth = max(left_depth, right_depth) + 1
-
-        return depth
 
     def maxDepth(self, root: Optional[TreeNode]) -> int:
-        return self.__max_depth(0, root)
+        if not root:
+            return 0
+        left = self.maxDepth(root.left)
+        right = self.maxDepth(root.right)
+        return 1 + max(left, right)
+
+
+
 
 
 solution = Solution()
